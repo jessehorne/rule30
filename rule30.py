@@ -46,47 +46,48 @@ class Rule30:
     def render(self):
         self.current_row_num += 1
 
-        new_row = self.new_row_skeleton[::]
+        if self.current_row_num < self.height-5:
+            new_row = self.new_row_skeleton[::]
 
-        # rule logic here
-        for key, val in enumerate(self.current_row):
-            if key < len(self.current_row)-2:
-                curr = [val, self.current_row[key+1], self.current_row[key+2]]
+            # rule logic here
+            for key, val in enumerate(self.current_row):
+                if key < len(self.current_row)-2:
+                    curr = [val, self.current_row[key+1], self.current_row[key+2]]
 
-                if curr == [1, 1, 1]:
-                    new_row[key+1] = 0
+                    if curr == [1, 1, 1]:
+                        new_row[key+1] = 0
 
-                if curr == [1, 1, 0]:
-                    new_row[key+1] = 0
+                    if curr == [1, 1, 0]:
+                        new_row[key+1] = 0
 
-                if curr == [1, 0, 1]:
-                    new_row[key+1] = 0
+                    if curr == [1, 0, 1]:
+                        new_row[key+1] = 0
 
-                if curr == [1, 0, 0]:
-                    new_row[key+1] = 1
+                    if curr == [1, 0, 0]:
+                        new_row[key+1] = 1
 
-                if curr == [0, 1, 1]:
-                    new_row[key+1] = 1
+                    if curr == [0, 1, 1]:
+                        new_row[key+1] = 1
 
-                if curr == [0, 1, 0]:
-                    new_row[key+1] = 1
+                    if curr == [0, 1, 0]:
+                        new_row[key+1] = 1
 
-                if curr == [0, 0, 1]:
-                    new_row[key+1] = 1
+                    if curr == [0, 0, 1]:
+                        new_row[key+1] = 1
 
-                if curr == [0, 0, 0]:
-                    new_row[key+1] = 0
-        # end rule logic
+                    if curr == [0, 0, 0]:
+                        new_row[key+1] = 0
+            # end rule logic
 
-        self.current_row = new_row
+            self.current_row = new_row
 
-        # draw current_row
-        # self.screen.set_at((rand_x, rand_y), self.pixel_color)
-        for key, val in enumerate(self.current_row):
-            if val == 1:
-                self.screen.set_at((key, self.current_row_num), self.pixel_color)
+            # draw current_row
+            # self.screen.set_at((rand_x, rand_y), self.pixel_color)
+            for key, val in enumerate(self.current_row):
+                if val == 1:
+                    self.screen.set_at((key, self.current_row_num+2), self.pixel_color)
 
-        pygame.display.flip()
+            pygame.display.flip()
 
     def cleanup(self):
         pygame.quit()
