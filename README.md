@@ -1,6 +1,8 @@
 rule30
 ======
 
+[[https://github.com/jessehorne/rule30/blob/master/screenshot.png]]
+
 An open-source implementation of Stephen Wolframs Rule 30 cellular automaton rule written using Python and pygame.
 
 ## Requirements
